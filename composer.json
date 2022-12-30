@@ -3,13 +3,25 @@
     "sort-packages": true
   },
   "require": {
-    "PHP": ">7.4"
+    "PHP": ">7.4",
+    "symfony/dotenv": "^6.2",
+    "symfony/http-client": "^6.2"
   },
   "autoload": {
     "psr-4": {
-      "http\\": "http/",
-      "App\\": "App/"
+      "Src\\Http\\": "Src/Http/",
+      "Src\\Services\\": "Src/Services/",
+      "Src\\Notifications\\": "Src/Notifications/"
 
     }
+  },
+  "require-dev": {
+    "vimeo/psalm": "^5.4"
+  },
+  "scripts": {
+    "fixer": [
+      "./vendor/bin/psalm\n",
+      "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix ./\n"
+      ]
   }
 }

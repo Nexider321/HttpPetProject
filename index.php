@@ -1,23 +1,29 @@
 <?php
 
-use http\Request;
-use App\Converter;
-use http\SendTelegram;
 require('vendor/autoload.php');
 
-//$convert->GetCurrency();
+use Src\Http\Request;
+use Src\Notifications\SendTelegram;
+use Src\Services\Converter;
+use Symfony\Component\Dotenv\Dotenv;
 
-$request = new Request();
-$convert = new Converter();
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/config/.env');
+
 $telegram = new SendTelegram();
-$get = $request->getQueryParams();
+
+$get = Request::getQueryParams();
 
 
-print_r($convert->ConvertCurrency($get));
+//$convert->GetCurrency(1);
 
+if (is_numeric($get)) {
+    $data = "New payment " . $get . " USD!!!";
+    echo $get;
+    try {
 
-
-$value = $convert->ConvertCurrency($get);
-    $data = "New payment ". $value . " USD!!!";
-    $telegram->send($data);
-
+        $telegram->send($data);
+    } catch (Exception $exception) {
+        throw new Exception();
+    }
+}
