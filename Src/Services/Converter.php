@@ -39,9 +39,8 @@ class Converter
             curl_close($curl);
             $myfile = fopen('currency.txt', "w");
             fwrite($myfile, $response);
-        }
-        elseif($method === '2') {
-           return SymfonyHttp::fetchApiInformation();
+        } elseif ($method === '2') {
+            return SymfonyHttp::fetchApiInformation();
         }
 
         return "Invalid Method";

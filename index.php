@@ -21,7 +21,6 @@ if (is_numeric($get)) {
     $data = "New payment " . $get . " USD!!!";
     echo $get;
     try {
-
         $telegram->send($data);
     } catch (Exception $exception) {
         throw new Exception();
