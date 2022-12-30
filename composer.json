@@ -1,0 +1,15 @@
+{
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "PHP": ">7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "http\\": "http/",
+      "App\\": "App/"
+
+    }
+  }
+}
