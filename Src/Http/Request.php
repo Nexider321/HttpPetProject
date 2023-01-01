@@ -23,7 +23,7 @@ class Request
         return $this->queryParams;
     }
 
-    public function getParsedBody()
+    public function getParsedBody(): ?array
     {
         return $this->parsedBody;
     }
