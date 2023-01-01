@@ -10,7 +10,7 @@ class Request
     private array $queryParams;
 
 
-    public function __construct(array $queryParams = [],array $parsedBody = null)
+    public function __construct(array $queryParams = [], array $parsedBody = null)
     {
         $this->queryParams = $queryParams;
         $this->parsedBody = $parsedBody;
