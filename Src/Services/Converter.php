@@ -14,9 +14,8 @@ class Converter
         return round($sum * $currenciesFile->rates->USD);
     }
 
-    public static function GetCurrency($method)
+    public function GetCurrency()
     {
-        if ($method === '1') {
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -35,14 +34,17 @@ class Converter
             ));
 
             $response = curl_exec($curl);
-
+            if (!curl_errno($curl)) {
+                switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
+                    case 200:  # OK
+                        $file = fopen('currency.txt', "w");
+                        fwrite($file, $response);
+                        break;
+                    default:
+                        echo 'Unexpected HTTP code: ', $http_code, "\n";
+                }
+            }
             curl_close($curl);
-            $myfile = fopen('currency.txt', "w");
-            fwrite($myfile, $response);
-        } elseif ($method === '2') {
-            return SymfonyHttp::fetchApiInformation();
-        }
 
-        return "Invalid Method";
     }
 }

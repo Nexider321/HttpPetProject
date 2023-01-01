@@ -12,17 +12,17 @@ $dotenv->load(__DIR__.'/config/.env');
 
 $telegram = new SendTelegram();
 
-$get = Request::getQueryParams();
+//$get = Request::getQueryParams();
 
-
-//$convert->GetCurrency(1);
-
-if (is_numeric($get)) {
-    $data = "New payment " . $get . " USD!!!";
-    echo $get;
-    try {
-        $telegram->send($data);
-    } catch (Exception $exception) {
-        throw new Exception();
-    }
-}
+$converter = new Converter();
+$re = $converter->GetCurrency();
+echo "\ngood";
+//if (is_numeric($get)) {
+//    $data = "New payment " . $get . " USD!!!";
+//    echo $get;
+//    try {
+//        $telegram->send($data);
+//    } catch (Exception $exception) {
+//        throw new Exception();
+//    }
+//}
