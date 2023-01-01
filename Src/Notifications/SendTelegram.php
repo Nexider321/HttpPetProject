@@ -22,7 +22,7 @@ class SendTelegram
                 CURLOPT_POSTFIELDS => $data
             ));
             curl_exec($ch);
-            if (!curl_errno($ch)){
+            if (!curl_errno($ch)) {
                 switch ($http_code = (string) curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
                     case 200:
                         curl_close($ch);
