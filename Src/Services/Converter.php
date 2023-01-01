@@ -7,14 +7,14 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class Converter
 {
-    public static function ConvertCurrency(int $sum)
+    public static function ConvertCurrency(int $sum): float
     {
-        $currenciesFile = json_decode(file_get_contents('currency.txt'));
+        $currenciesFile = (object) json_decode(file_get_contents('currency.txt'));
 
-        return round($sum * $currenciesFile->rates->USD);
+        return round($sum * (float) $currenciesFile->rates->USD);
     }
 
-    public function GetCurrency()
+    public function GetCurrency(): void
     {
             $curl = curl_init();
 
@@ -34,11 +34,12 @@ class Converter
             ));
 
             $response = curl_exec($curl);
+
             if (!curl_errno($curl)) {
                 switch ($http_code = curl_getinfo($curl, CURLINFO_HTTP_CODE)) {
                     case 200:  # OK
                         $file = fopen('currency.txt', "w");
-                        fwrite($file, $response);
+                        fwrite($file, (string) $response);
                         break;
                     default:
                         echo 'Unexpected HTTP code: ', $http_code, "\n";

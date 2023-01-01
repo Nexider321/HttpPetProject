@@ -4,7 +4,7 @@ namespace Src\Notifications;
 
 class SendTelegram
 {
-    public function send($data)
+    public function send(string $data): void
     {
         $token = $_ENV['TELEGRAM_KEY'];
         $data = array(

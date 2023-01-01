@@ -6,13 +6,23 @@ use Src\Services\Converter;
 
 class Request
 {
-    public static function getQueryParams()
-    {
 
-            if (is_numeric($_GET['pay']) && !empty($_GET['pay'])) {
-                return $value = Converter::ConvertCurrency($_GET['pay']);
-            } else {
-                echo "No INT: pay";
-            }
+    public function __construct(array $queryParams = [],array $parsedBody = null)
+    {
+        $this->queryParams = $queryParams;
+        $this->parsedBody = $parsedBody;
+
+    }
+
+
+
+    public function getQueryParams(): array
+    {
+        return $this->queryParams;
+    }
+
+    public function getParsedBody()
+    {
+        return $this->parsedBody;
     }
 }

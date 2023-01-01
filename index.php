@@ -12,11 +12,20 @@ $dotenv->load(__DIR__.'/config/.env');
 
 $telegram = new SendTelegram();
 
-//$get = Request::getQueryParams();
+$request = new Request($_GET, $_POST);
 
-$converter = new Converter();
-$re = $converter->GetCurrency();
-echo "\ngood";
+echo Converter::ConvertCurrency(252);
+//
+//$get = $request->getQueryParams();
+//if (array_key_exists('pay', $get)) {
+//    echo  Converter::ConvertCurrency($get['pay']);
+//
+//} else {
+//    echo "in query params doesnt have pay param";
+//}
+//$converter = new Converter();
+//$re = $converter->GetCurrency();
+//echo "\ngood";
 //if (is_numeric($get)) {
 //    $data = "New payment " . $get . " USD!!!";
 //    echo $get;
