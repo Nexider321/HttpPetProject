@@ -14,9 +14,8 @@ $telegram = new SendTelegram();
 
 $request = new Request($_GET, $_POST);
 
-
-
 $get = $request->getQueryParams();
+
 if (array_key_exists('pay', $get)) {
     $money =  Converter::ConvertCurrency($get['pay']);
     $data = "New payment " . $money . " USD!!!";
