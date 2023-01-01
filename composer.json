@@ -20,8 +20,9 @@
   },
   "scripts": {
     "fixer": [
-      "./vendor/bin/psalm\n",
-      "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix ./"
+      "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix ./",
+      "./vendor/bin/psalm\n"
+
       ]
   }
 }
