@@ -9,9 +9,11 @@ class Converter
 {
     public static function ConvertCurrency(int $sum): float
     {
-        $currenciesFile =  json_decode(file_get_contents('currency.txt'));
-
-        return round($sum * (float) $currenciesFile->rates->USD);
+        $currenciesFile = (object)  json_decode(file_get_contents('currency.txt'));
+        if (isset($currenciesFile->rates->USD)) {
+            return round($sum * (float) $currenciesFile->rates->USD);
+        }
+        return $sum * 1.2;
     }
 
     public function GetCurrency(): void
