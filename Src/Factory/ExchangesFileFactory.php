@@ -15,7 +15,8 @@ class ExchangesFileFactory
                 break;
 
             case 'symfony':
-                $http_code = SymfonyHttpFile::create();
+                $http_code = new SymfonyHttpFile();
+
                 break;
 
             default:

@@ -6,7 +6,7 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class SymfonyHttpFile
 {
-    public static function create(): string
+    public static function create(): int
     {
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [
@@ -24,11 +24,11 @@ class SymfonyHttpFile
 
         $statusCode = $response->getStatusCode();
         // $statusCode = 200
-        $contentType = $response->getHeaders()['content-type'][0];
+//        $contentType = $response->getHeaders()['content-type'][0];
         // $contentType = 'application/json'
         $content = $response->getContent();
         // $content = '{"id":521583, "name":"symfony-docs", ...}'
-        $contentArray = $response->toArray();
+//        $contentArray = $response->toArray();
         // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
         switch ($statusCode) {
             case 200:  # OK

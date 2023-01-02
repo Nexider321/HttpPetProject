@@ -28,11 +28,11 @@ if (array_key_exists('pay', $get)) {
         try {
             $telegram->send($data);
         } catch (\Src\Exceptions\SendException $exception) {
-            echo $exception;
+            echo \Exception("Что то нето $exception");
         }
     } else {
         echo "that not number get";
     }
 } else {
-    echo "in query params doesnt have pay param";
+    echo "Query params doesn't have  specified a pay parameter";
 }

@@ -4,7 +4,7 @@ namespace Src\Notifications;
 
 class SendTelegram
 {
-    public function send(string $data): void
+    public function send(string $data): int
     {
         $token = $_ENV['TELEGRAM_KEY'];
         $data = array(
@@ -22,8 +22,9 @@ class SendTelegram
                 CURLOPT_POSTFIELDS => $data
             ));
             curl_exec($ch);
+            $http_code = (string) curl_getinfo($ch, CURLINFO_HTTP_CODE);
             if (!curl_errno($ch)) {
-                switch ($http_code = (string) curl_getinfo($ch, CURLINFO_HTTP_CODE)) {
+                switch ($http_code) {
                     case 200:
                         curl_close($ch);
                         break;
@@ -33,5 +34,6 @@ class SendTelegram
             }
             curl_close($ch);
         }
+        return $http_code;
     }
 }
