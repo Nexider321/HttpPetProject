@@ -3,6 +3,7 @@
 namespace Src\Factory;
 
 use Src\Http\CurlFile;
+use Src\Http\CurlRequest;
 use Src\Http\SymfonyHttpFile;
 
 class ExchangesFileFactory
@@ -11,7 +12,21 @@ class ExchangesFileFactory
     {
         switch ($type) {
             case 'curl':
-                $http_code = CurlFile::create();
+                $curl = new CurlRequest();
+                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=GBP%2CJPY%2CRUB%2CUSD&base=EUR')
+                    ->setHeaders([
+                        "Content-Type: text/plain",
+                        "apikey: " . $_ENV['API_KEY'],
+                    ])
+                    ->send();
+                $status_code = $curl->info;
+                if ($status_code == 200) {
+                    $file = fopen('currency.txt', "w");
+                    fwrite($file, (string) $curl->content);
+                    return "Http code $status_code";
+                } else {
+                    return "Http code $status_code";
+                }
                 break;
 
             case 'symfony':
