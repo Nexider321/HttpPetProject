@@ -4,7 +4,7 @@ namespace Src\Http;
 
 class CurlFile
 {
-    public static function create()
+    public static function create(): string
     {
         $curl = curl_init();
 

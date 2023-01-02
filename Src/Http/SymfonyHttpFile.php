@@ -6,7 +6,7 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class SymfonyHttpFile
 {
-    public static function create()
+    public static function create(): string
     {
         $client = HttpClient::create();
         $response = $client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [
