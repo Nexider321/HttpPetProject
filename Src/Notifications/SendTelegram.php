@@ -31,6 +31,8 @@ class SendTelegram
                     default:
                         echo "error $http_code";
                 }
+            } else{
+                return 0;
             }
             curl_close($ch);
         }
