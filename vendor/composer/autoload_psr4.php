@@ -24,6 +24,7 @@ return array(
     'Src\\Services\\' => array($baseDir . '/Src/Services'),
     'Src\\Notifications\\' => array($baseDir . '/Src/Notifications'),
     'Src\\Http\\' => array($baseDir . '/Src/Http'),
+    'Src\\Factory\\' => array($baseDir . '/Src/Factory'),
     'Spatie\\ArrayToXml\\' => array($vendorDir . '/spatie/array-to-xml/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),

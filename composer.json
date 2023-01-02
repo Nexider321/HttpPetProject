@@ -11,7 +11,8 @@
     "psr-4": {
       "Src\\Http\\": "Src/Http/",
       "Src\\Services\\": "Src/Services/",
-      "Src\\Notifications\\": "Src/Notifications/"
+      "Src\\Notifications\\": "Src/Notifications/",
+      "Src\\Factory\\": "Src/Factory/"
 
     }
   },
