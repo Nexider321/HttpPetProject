@@ -51,6 +51,10 @@ class CurlRequest
     {
         try {
             if ($this->handler == null) {
+                //@property @mixin
+                /**
+                 * @psalm-suppress PossiblyInvalidPropertyAssignmentValue
+                 */
                 $this->handler = curl_init();
             }
             //@property @mixin
@@ -87,12 +91,12 @@ class CurlRequest
             }
             //@property @mixin
             /**
-             * @psalm-suppress PossiblyInvalidArgument
+             * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
              */
             $this->content = curl_exec($this->handler);
             //@property @mixin
             /**
-             * @psalm-suppress PossiblyInvalidArgument
+             * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
              */
             $this->info = (string) curl_getinfo($this->handler, CURLINFO_HTTP_CODE);
         } catch (Exception $e) {
@@ -100,7 +104,7 @@ class CurlRequest
         }
         //@property @mixin
         /**
-         * @psalm-suppress PossiblyInvalidArgument
+         * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
          */
         curl_close($this->handler);
         $this->handler = null;
