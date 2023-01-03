@@ -10,6 +10,8 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class SymfonyHttpFile
 {
+    private \Symfony\Contracts\HttpClient\HttpClientInterface $client;
+
     public function __construct()
     {
         $this->client = HttpClient::create();
@@ -21,12 +23,11 @@ class SymfonyHttpFile
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function create(): int
+    public function create(string $symb): int
     {
-
         $response = $this->client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [
             'query' => [
-                'symbols' => 'GBP,JPY,RUB,USD',
+                'symbols' => $symb,
                 'base' => 'EUR',
             ],
             'headers' => [
@@ -49,36 +50,7 @@ class SymfonyHttpFile
                 fwrite($file, $content);
                 break;
             default:
-                echo 'Unexpected HTTP code: ', $statusCode, "\n";
         }
         return $statusCode;
     }
-
-
-//
-//    private $client;
-//
-//    public function __construct(HttpClientInterface $client)
-//    {
-//        $this->client = $client;
-//    }
-//
-//    public static function fetchApiInformation(): array
-//    {
-//        $response = $this->client->request(
-//            'GET',
-//            'https://api.github.com/repos/symfony/symfony-docs'
-//        );
-//
-//        $statusCode = $response->getStatusCode();
-//        // $statusCode = 200
-//        $contentType = $response->getHeaders()['content-type'][0];
-//        // $contentType = 'application/json'
-//        $content = $response->getContent();
-//        // $content = '{"id":521583, "name":"symfony-docs", ...}'
-//        $content = $response->toArray();
-//        // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
-//
-//        return $content;
-//    }
 }

@@ -23,9 +23,9 @@ class Telegram
                 ->send();
             $status_code = $curl->info;
             if ($status_code == 200) {
-                return "Message send Http code $status_code";
+                return "TELEGRAM Message send Http code $status_code";
             } else {
-                return "Message not sent Http code $status_code";
+                return "TELEGRAM Message not sent Http code $status_code";
             }
         }
         return "Error";

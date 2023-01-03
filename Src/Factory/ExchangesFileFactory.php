@@ -6,6 +6,7 @@ use SebastianBergmann\Diff\Exception;
 use Src\Http\CurlFile;
 use Src\Http\CurlRequest;
 use Src\Http\SymfonyHttpFile;
+use Src\Services\File;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -19,47 +20,34 @@ class ExchangesFileFactory
      * @throws RedirectionExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public static function create($type)
+    public static function create($type, $symb)
     {
         switch ($type) {
             case 'curl':
 
-                    $curl = new CurlRequest();
-                    $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=GBP%2CJPY%2CRUB%2CUSD&base=EUR')
-                        ->setHeaders([
-                            "Content-Type: text/plain",
-                            "apikey: " . $_ENV['API_KEY'],
-                        ])
-                        ->send();
-                    $status_code = $curl->info;
-                    if ($status_code == 200) {
-                        $file = fopen('currency.txt', "w");
-                        fwrite($file, (string) $curl->content);
-                        fclose($file);
-                        self::LogFile($status_code);
-
-                        return "Http code $status_code";
-                    } else {
-                        $error = date("Y-m-d H:i:s")." Отправка не сработала Http code $status_code".PHP_EOL;
-                        self::LogFile($error);
-                        return $error;
-
-                    }
-
-
-                break;
-
+                $curl = new CurlRequest();
+                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=GBP%2CJPY%2CRUB%2CUSD&base=EUR')
+                    ->setHeaders([
+                        "Content-Type: text/plain",
+                        "apikey: " . $_ENV['API_KEY'],
+                    ])
+                    ->send();
+                $status_code = $curl->info;
+                if ($status_code == 200) {
+                    $file = fopen('currency.txt', "w");
+                    fwrite($file, (string) $curl->content);
+                    fclose($file);
+                    return " Curl HTTP code $status_code";
+                } else {
+                    return "Curl HTTP code $status_code";
+                }
+                // no break
             case 'symfony':
                 $http_file = new SymfonyHttpFile();
-                return $http_file->create();
+                $status_code = $http_file->create($symb);
+                return"symfony HTTP Code $status_code ";
             default:
-                die('Incorrect type ' . $type);
+                die('Incorrect type ' . $type . ' choose curl or symfony');
         }
-
-    }
-
-    public static function LogFile($error)
-    {
-        file_put_contents('log.txt', $error, FILE_APPEND);
     }
 }
