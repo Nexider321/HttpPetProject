@@ -8,8 +8,7 @@ class CurlRequest
 {
     private string $method = 'get';
 
-    private null|bool|string $handler = null;
-
+    private object|null $handler = null;
 
     private string $url = '';
 
@@ -21,6 +20,9 @@ class CurlRequest
 
     public bool|string $content = '';
 
+    public function __construct()
+    {
+    }
 
     public function setUrl(string $url = ''): static
     {
@@ -51,10 +53,6 @@ class CurlRequest
     {
         try {
             if ($this->handler == null) {
-                //@property @mixin
-                /**
-                 * @psalm-suppress PossiblyInvalidPropertyAssignmentValue
-                 */
                 $this->handler = curl_init();
             }
             //@property @mixin
@@ -63,10 +61,7 @@ class CurlRequest
              */
             switch (strtolower($this->method)) {
                 case 'post':
-                    //@property @mixin
-                    /**
-                     * @psalm-suppress PossiblyInvalidArgument
-                     */
+
                     curl_setopt_array($this->handler, [
                         CURLOPT_URL => $this->url,
                         CURLOPT_RETURNTRANSFER => true,
@@ -76,10 +71,7 @@ class CurlRequest
                     break;
 
                 default:
-                    //@property @mixin
-                    /**
-                     * @psalm-suppress PossiblyInvalidArgument
-                     */
+
                     curl_setopt_array($this->handler, [
                         CURLOPT_URL => $this->url,
                         CURLOPT_HTTPHEADER => $this->headers,

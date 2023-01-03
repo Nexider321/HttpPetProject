@@ -3,13 +3,28 @@
 namespace Src\Http;
 
 use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class SymfonyHttpFile
 {
-    public static function create(): int
+    public function __construct()
     {
-        $client = HttpClient::create();
-        $response = $client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [
+        $this->client = HttpClient::create();
+    }
+
+    /**
+     * @throws TransportExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ClientExceptionInterface
+     */
+    public function create(): int
+    {
+
+        $response = $this->client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [
             'query' => [
                 'symbols' => 'GBP,JPY,RUB,USD',
                 'base' => 'EUR',
@@ -18,8 +33,6 @@ class SymfonyHttpFile
                 "Content-Type: text/plain",
                 "apikey: " . $_ENV['API_KEY']
             ]
-
-
         ]);
 
         $statusCode = $response->getStatusCode();

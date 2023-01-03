@@ -4,3 +4,4 @@
 composer.lock
 .php-cs-*
 currency.txt
+log.txt

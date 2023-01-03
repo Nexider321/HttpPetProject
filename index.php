@@ -11,23 +11,28 @@ use Src\Factory\ExchangesFileFactory;
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/config/.env');
 
-//echo ExchangesFileFactory::create('curl'); /// symfony or curl
+try {
+    echo ExchangesFileFactory::create('curl');
+} catch (\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface|\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface|\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface|\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface $e) {
+    echo 'Поймано исключение: ',  $e->getMessage(), "\n";
+
+} /// symfony or curl
 
 // todo curl class
-
-$request = new Request($_GET, $_POST);
 //
-$get = $request->getQueryParams();
-
-if (array_key_exists('pay', $get)) {
-    if (is_numeric($get['pay'])) {
-        $money =  Converter::ConvertCurrency($get['pay']);
-        $data = "New payment " . $money . " USD";
-        echo $money;
-        echo Telegram::send($data);
-    } else {
-        echo "that not number get";
-    }
-} else {
-    echo "Query params doesn't have  specified a pay parameter";
-}
+//$request = new Request($_GET, $_POST);
+////
+//$get = $request->getQueryParams();
+//
+//if (array_key_exists('pay', $get)) {
+//    if (is_numeric($get['pay'])) {
+//        $money =  Converter::ConvertCurrency($get['pay']);
+//        $data = "New payment " . $money . " USD";
+//        echo $money;
+//        echo Telegram::send($data);
+//    } else {
+//        echo "that not number get";
+//    }
+//} else {
+//    echo "Query params doesn't have  specified a pay parameter";
+//}
