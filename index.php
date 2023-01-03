@@ -18,8 +18,9 @@ $get = $request->getQueryParams();
 
 if (array_key_exists('create', $get)) {
     try {
-        File::log(ExchangesFileFactory::create($get['create'], 'GBP,JPY,RUB,USD'));
-        echo "created ";
+        $status_code = ExchangesFileFactory::create($get['create'], 'GBP,JPY,RUB,USD');
+        File::log($status_code);
+        echo "$status_code";
     } catch (\Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface|\Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface|\Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface|\Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface $e) {
         echo 'Поймано исключение: ', $e->getMessage(), "\n";
     }
@@ -29,8 +30,11 @@ if (array_key_exists('pay', $get)) {
     if (is_numeric($get['pay'])) {
         $money =  Converter::ConvertCurrency($get['pay']);
         $data = "New payment " . $money . " USD";
-        echo " Money:" . $money;
-        File::log(Telegram::send($data) . " Message: ". $data);
+        $status_code = Telegram::send($data);
+        $send_status_code =  $status_code  . " Message: ". $data;
+        File::log($send_status_code);
+        echo "$send_status_code";
+
     } else {
         echo "that not number get";
     }
