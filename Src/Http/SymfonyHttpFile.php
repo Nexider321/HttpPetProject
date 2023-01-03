@@ -2,6 +2,7 @@
 
 namespace Src\Http;
 
+use Src\Services\File;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -46,8 +47,7 @@ class SymfonyHttpFile
         // $content = ['id' => 521583, 'name' => 'symfony-docs', ...]
         switch ($statusCode) {
             case 200:  # OK
-                $file = fopen('currency.txt', "w");
-                fwrite($file, $content);
+                File::write($content);
                 break;
             default:
         }

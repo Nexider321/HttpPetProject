@@ -34,9 +34,7 @@ class ExchangesFileFactory
                     ->send();
                 $status_code = $curl->info;
                 if ($status_code == 200) {
-                    $file = fopen('currency.txt', "w");
-                    fwrite($file, (string) $curl->content);
-                    fclose($file);
+                    File::write($curl->content);
                     return " Curl HTTP code $status_code";
                 } else {
                     return "Curl HTTP code $status_code";
