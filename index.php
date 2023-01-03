@@ -34,7 +34,6 @@ if (array_key_exists('pay', $get)) {
         $send_status_code =  $status_code  . " Message: ". $data;
         File::log($send_status_code);
         echo "$send_status_code";
-
     } else {
         echo "that not number get";
     }
