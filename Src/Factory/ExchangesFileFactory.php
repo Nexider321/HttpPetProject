@@ -26,7 +26,7 @@ class ExchangesFileFactory
             case 'curl':
 
                 $curl = new CurlRequest();
-                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=GBP%2CJPY%2CRUB%2CUSD&base=EUR')
+                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=' .$symb.'&base=EUR')
                     ->setHeaders([
                         "Content-Type: text/plain",
                         "apikey: " . $_ENV['API_KEY'],
