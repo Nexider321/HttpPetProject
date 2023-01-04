@@ -2,7 +2,8 @@
 
 namespace Src\Http;
 
-use Src\Services\Converter;
+use Exception;
+use Src\Factory\ExchangesFileFactory;
 
 class Request
 {
@@ -10,12 +11,15 @@ class Request
     private array $queryParams;
 
 
+    /**
+     * @throws Exception
+     */
     public function __construct(array $queryParams = [], array $parsedBody = null)
     {
         $this->queryParams = $queryParams;
         $this->parsedBody = $parsedBody;
-    }
 
+    }
 
 
     public function getQueryParams(): array
@@ -27,4 +31,5 @@ class Request
     {
         return $this->parsedBody;
     }
+
 }

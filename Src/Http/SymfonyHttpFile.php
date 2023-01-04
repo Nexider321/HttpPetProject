@@ -4,26 +4,18 @@ namespace Src\Http;
 
 use Src\Services\File;
 use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
-use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+
 
 class SymfonyHttpFile
 {
-    private \Symfony\Contracts\HttpClient\HttpClientInterface $client;
+    private  $client;
 
     public function __construct()
     {
         $this->client = HttpClient::create();
     }
 
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
+
     public function create(string $symb): int
     {
         $response = $this->client->request('GET', 'https://api.apilayer.com/exchangerates_data/latest', [

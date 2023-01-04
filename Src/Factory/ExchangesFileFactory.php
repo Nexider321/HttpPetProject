@@ -14,12 +14,8 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class ExchangesFileFactory
 {
-    /**
-     * @throws TransportExceptionInterface
-     * @throws ServerExceptionInterface
-     * @throws RedirectionExceptionInterface
-     * @throws ClientExceptionInterface
-     */
+
+
     public static function create($type, $symb)
     {
         switch ($type) {
