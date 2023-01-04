@@ -18,7 +18,6 @@ class Request
     {
         $this->queryParams = $queryParams;
         $this->parsedBody = $parsedBody;
-
     }
 
 
@@ -31,5 +30,4 @@ class Request
     {
         return $this->parsedBody;
     }
-
 }

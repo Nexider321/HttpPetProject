@@ -13,5 +13,4 @@ class RequestFactory
     {
         return new Request($get, $post);
     }
-
 }

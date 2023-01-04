@@ -13,9 +13,9 @@ class RunRequests
      */
     public function __construct(Request $request)
     {
-       $this->get = $request->getQueryParams();
+        $this->get = $request->getQueryParams();
         if (isset($this->get['create'])) {
-             $this->createFile();
+            $this->createFile();
         }
 //        if (isset($this->get['pay'])) {
 //            $this->
@@ -27,7 +27,7 @@ class RunRequests
      */
     public function createFile(): void
     {
-        if($this->isValid($this->get['create'])) {
+        if ($this->isValid($this->get['create'])) {
 //            File::log(ExchangesFileFactory::create($this->get['create'], 'GBP,JPY,RUB,USD'));
             File::log('OK');
         } else {
@@ -57,7 +57,7 @@ class RunRequests
      */
     private function isNumeric($key): bool
     {
-        if(is_numeric($key)){
+        if (is_numeric($key)) {
             throw new Exception("Запрос $key не должен содержать цифры!");
         }
         return $key;
@@ -66,7 +66,7 @@ class RunRequests
     /**
      * @throws Exception
      */
-    private  function isEmpty($key): bool
+    private function isEmpty($key): bool
     {
         if (empty($key)) {
             throw new Exception("Запрос $key не должен быть пустым!");
@@ -79,7 +79,7 @@ class RunRequests
      */
     private function isKeySuccess($key): bool
     {
-        if ($key !== 'curl' && $key !== 'symfony'){
+        if ($key !== 'curl' && $key !== 'symfony') {
             throw new Exception('Запрос create  должен содержать curl или symfony!');
         }
         return $key;

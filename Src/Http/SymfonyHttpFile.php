@@ -5,10 +5,9 @@ namespace Src\Http;
 use Src\Services\File;
 use Symfony\Component\HttpClient\HttpClient;
 
-
 class SymfonyHttpFile
 {
-    private  $client;
+    private $client;
 
     public function __construct()
     {

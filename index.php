@@ -18,7 +18,6 @@ try {
     var_dump($request = new RunRequests(RequestFactory::create($_GET, $_POST)));
 } catch (Exception $e) {
     echo "Ошибка _GET " . $e->getMessage();
-
 }
 
 

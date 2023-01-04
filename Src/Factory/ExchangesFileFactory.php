@@ -14,8 +14,6 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 class ExchangesFileFactory
 {
-
-
     public static function create($type, $symb)
     {
         switch ($type) {
