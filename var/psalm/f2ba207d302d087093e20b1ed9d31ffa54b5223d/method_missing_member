@@ -1,1 +1,0 @@
-a:4:{s:29:"src\http\request::$parsedBody";a:1:{s:29:"src\http\request::__construct";b:1;}s:30:"src\http\request::$queryParams";a:1:{s:29:"src\http\request::__construct";b:1;}s:33:"src\http\symfonyhttpfile::$client";a:1:{s:37:"src\http\symfonyhttpfile::__construct";b:1;}s:26:"src\http\runrequests::$get";a:1:{s:33:"src\http\runrequests::__construct";b:1;}}
