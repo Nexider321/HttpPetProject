@@ -3,22 +3,34 @@
 require('vendor/autoload.php');
 
 use Src\Factory\RequestFactory;
+use Src\Http\RequestHandler;
 use Src\Http\RunRequests;
 use Src\Http\Request;
 use Src\Notifications\Telegram;
+use Src\Services\ConvertClass;
 use Src\Services\Converter;
 use Src\Services\File;
 use Symfony\Component\Dotenv\Dotenv;
 use Src\Factory\ExchangesFileFactory;
 
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/config/.env');
 
-try {
-    var_dump($request = new RunRequests(RequestFactory::create($_GET, $_POST)));
-} catch (Exception $e) {
-    echo "Ошибка _GET " . $e->getMessage();
-}
+
+$test = new RequestHandler();
+var_dump($test());
+
+//$test = new ConvertClass('23', 'currency.txt');
+//
+//var_dump($test->getNumber());
+//
+//echo $test->getNumber() . PHP_EOL;
+//$dotenv = new Dotenv();
+//$dotenv->load(__DIR__.'/config/.env');
+//
+//try {
+//    var_dump($request = new RunRequests(RequestFactory::create($_GET, $_POST)));
+//} catch (Exception $e) {
+//    echo "Ошибка _GET " . $e->getMessage();
+//}
 
 
 //try {

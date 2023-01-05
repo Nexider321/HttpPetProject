@@ -6,8 +6,15 @@ namespace Src\Http;
 
 final class RequestHandler
 {
-    public function __construct(
+    private array $get;
 
-    ) {
+//    public function __construct(
+//        Request $request
+//    ) {
+//        $this->get = $request->getQueryParams();
+//    }
+    public function __invoke(): string
+    {
+        return "OK";
     }
 }

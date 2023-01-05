@@ -7,17 +7,17 @@ use Src\Factory\ExchangesFileFactory;
 
 class Request
 {
-    private ?array $parsedBody;
-    private array $queryParams;
+    private readonly ?array $parsedBody;
+    private readonly array $queryParams;
 
 
     /**
      * @throws Exception
      */
-    public function __construct(array $queryParams = [], array $parsedBody = null)
-    {
-        $this->queryParams = $queryParams;
-        $this->parsedBody = $parsedBody;
+    public function __construct(
+        array  $queryParams = [],
+        array $parsedBody = null
+    ) {
     }
 
 

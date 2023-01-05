@@ -8,7 +8,6 @@ class Converter
 {
     public static function ConvertCurrency(int $sum): float
     {
-        $currenciesFile = (object)  json_decode(file_get_contents('currency.txt'));
         //@property @mixin
         /**
          * @psalm-suppress MixedPropertyFetch
