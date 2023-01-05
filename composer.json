@@ -22,8 +22,8 @@
   },
   "scripts": {
     "fixer": [
-      "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix ./",
-      "./vendor/bin/psalm\n"
+      "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix .",
+      "vendor/bin/psalm --no-diff"
 
       ]
   }

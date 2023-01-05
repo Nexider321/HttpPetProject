@@ -1,0 +1,1 @@
+a:3:{s:47:"symfony\component\httpclient\httpclient::create";a:1:{s:58:"/var/www/html/PaymentTelegram/Src/Http/SymfonyHttpFile.php";b:1;}s:22:"src\services\file::log";a:1:{s:54:"/var/www/html/PaymentTelegram/Src/Http/RunRequests.php";b:1;}s:37:"src\services\validationinterface::log";a:1:{s:54:"/var/www/html/PaymentTelegram/Src/Http/RunRequests.php";b:1;}}
