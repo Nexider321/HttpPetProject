@@ -23,9 +23,9 @@ class FileNotFoundException extends IOException
     {
         if (null === $message) {
             if (null === $path) {
-                $message = 'File could not be found.';
+                $message = 'CreateQueryValidation could not be found.';
             } else {
-                $message = sprintf('File "%s" could not be found.', $path);
+                $message = sprintf('CreateQueryValidation "%s" could not be found.', $path);
             }
         }
 

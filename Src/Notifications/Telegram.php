@@ -2,7 +2,7 @@
 
 namespace Src\Notifications;
 
-use Src\Http\CurlRequest;
+use Src\Http\Request\CurlRequest;
 
 class Telegram
 {

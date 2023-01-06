@@ -3,20 +3,21 @@
 require('vendor/autoload.php');
 
 use Src\Factory\RequestFactory;
-use Src\Http\RequestHandler;
-use Src\Http\RunRequests;
-use Src\Http\Request;
-use Src\Notifications\Telegram;
-use Src\Services\ConvertClass;
-use Src\Services\Converter;
-use Src\Services\File;
-use Symfony\Component\Dotenv\Dotenv;
-use Src\Factory\ExchangesFileFactory;
+use Src\Http\Request\Request;
+use Src\Http\Request\RunRequests;
+
+//$test = new GetRequestHandler();
+//var_dump($test());
 
 
+try {
+//    $request = new GetRequestHandler(RequestFactory::create($_GET, $_POST));
+    $request = new Runrequests(RequestFactory::create($_GET, $_POST));
+    var_dump($request);
+} catch (Exception $e) {
+    echo "Ошибка _GET " . $e->getMessage();
+}
 
-$test = new RequestHandler();
-var_dump($test());
 
 //$test = new ConvertClass('23', 'currency.txt');
 //
@@ -29,7 +30,6 @@ var_dump($test());
 //try {
 //    var_dump($request = new RunRequests(RequestFactory::create($_GET, $_POST)));
 //} catch (Exception $e) {
-//    echo "Ошибка _GET " . $e->getMessage();
 //}
 
 
@@ -45,7 +45,7 @@ var_dump($test());
 //        $data = "New payment " . $money . " USD";
 //        $status_code = Telegram::send($data);
 //        $send_status_code =  $status_code  . " Message: ". $data;
-//        File::log($send_status_code);
+//        CreateQueryValidation::log($send_status_code);
 //        echo "$send_status_code";
 //    } else {
 //        echo "that not number get";

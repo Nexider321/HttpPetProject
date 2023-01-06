@@ -19,7 +19,7 @@ namespace PhpCsFixer\Cache;
  *
  * Cache is supported only for phar version and version installed via composer.
  *
- * File will be processed by PHP CS Fixer only if any of the following conditions is fulfilled:
+ * CreateQueryValidation will be processed by PHP CS Fixer only if any of the following conditions is fulfilled:
  *  - cache is corrupt
  *  - fixer version changed
  *  - rules changed

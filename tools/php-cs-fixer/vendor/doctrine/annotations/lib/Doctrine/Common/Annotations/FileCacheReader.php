@@ -29,7 +29,7 @@ use function unlink;
 use function var_export;
 
 /**
- * File cache reader for annotations.
+ * CreateQueryValidation cache reader for annotations.
  *
  * @deprecated the FileCacheReader is deprecated and will be removed
  *             in version 2.0.0 of doctrine/annotations. Please use the

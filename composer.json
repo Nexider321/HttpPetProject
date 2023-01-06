@@ -25,6 +25,10 @@
       "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix .",
       "vendor/bin/psalm --no-diff"
 
-      ]
+      ],
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+    "php -S 127.0.0.1:8080"
+  ]
   }
 }

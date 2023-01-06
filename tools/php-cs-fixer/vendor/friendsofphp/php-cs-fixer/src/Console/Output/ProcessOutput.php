@@ -26,7 +26,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 final class ProcessOutput implements ProcessOutputInterface
 {
     /**
-     * File statuses map.
+     * CreateQueryValidation statuses map.
      *
      * @var array<FixerFileProcessedEvent::STATUS_*, array{symbol: string, format: string, description: string}>
      */

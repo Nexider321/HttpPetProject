@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Http;
+namespace Src\Http\Request;
 
 use SebastianBergmann\Diff\Exception;
 
@@ -83,12 +83,12 @@ class CurlRequest
             }
             //@property @mixin
             /**
-             * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
+             * @psalm-suppress ArgumentTypeCoercion
              */
             $this->content = curl_exec($this->handler);
             //@property @mixin
             /**
-             * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
+             * @psalm-suppress ArgumentTypeCoercion
              */
             $this->info = (string) curl_getinfo($this->handler, CURLINFO_HTTP_CODE);
         } catch (Exception $e) {
@@ -96,7 +96,7 @@ class CurlRequest
         }
         //@property @mixin
         /**
-         * @psalm-suppress PossiblyInvalidArgument, ArgumentTypeCoercion
+         * @psalm-suppress ArgumentTypeCoercion
          */
         curl_close($this->handler);
         $this->handler = null;

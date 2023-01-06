@@ -1,23 +1,18 @@
 <?php
 
-namespace Src\Http;
+namespace Src\Http\Request;
 
-use Exception;
-use Src\Factory\ExchangesFileFactory;
-
-class Request
+final class Request
 {
     private readonly ?array $parsedBody;
-    private readonly array $queryParams;
+    private array $queryParams;
 
-
-    /**
-     * @throws Exception
-     */
     public function __construct(
         array  $queryParams = [],
         array $parsedBody = null
     ) {
+        $this->queryParams = $queryParams;
+        $this->parsedBody = $parsedBody;
     }
 
 

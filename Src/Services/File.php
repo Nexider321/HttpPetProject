@@ -2,10 +2,7 @@
 
 namespace Src\Services;
 
-use mysql_xdevapi\Exception;
-use Src\Http\RunRequests;
-
-class File implements ValidationInterface
+class File
 {
     public static function log(string $error): string
     {
@@ -28,25 +25,5 @@ class File implements ValidationInterface
             return 'Запись не удалась';
         }
         return 'OK';
-    }
-
-    public function isValid(RunRequests $key): bool
-    {
-        // TODO: Implement isValid() method.
-    }
-
-    public function isNumeric(RunRequests $key): bool
-    {
-        // TODO: Implement isNumeric() method.
-    }
-
-    public function isEmpty(RunRequests $key): bool
-    {
-        // TODO: Implement isEmpty() method.
-    }
-
-    public function isKeySuccess(RunRequests $key): bool
-    {
-        // TODO: Implement isKeySuccess() method.
     }
 }

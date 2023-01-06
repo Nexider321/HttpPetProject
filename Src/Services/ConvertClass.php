@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Src\Services;
@@ -9,14 +10,13 @@ final class ConvertClass
         private readonly int    $sum,
         private readonly string $file
     ) {
-
     }
 
     public function getNumber(): float
     {
         return $this->sum($this->sum, $this->file);
     }
-    
+
 
 
     private function getFile($file): object

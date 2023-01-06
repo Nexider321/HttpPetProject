@@ -35,7 +35,7 @@ final class IncludeFixer extends AbstractFixer
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition(
-            'Include/Require and file path should be divided with a single space. File path should not be placed under brackets.',
+            'Include/Require and file path should be divided with a single space. CreateQueryValidation path should not be placed under brackets.',
             [
                 new CodeSample(
                     '<?php

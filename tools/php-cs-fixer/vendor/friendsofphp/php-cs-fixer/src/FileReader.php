@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace PhpCsFixer;
 
 /**
- * File reader that unify access to regular file and stdin-alike file.
+ * CreateQueryValidation reader that unify access to regular file and stdin-alike file.
  *
  * Regular file could be read multiple times with `file_get_contents`, but file provided on stdin cannot.
  * Consecutive try will provide empty content for stdin-alike file.
