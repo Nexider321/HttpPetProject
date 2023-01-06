@@ -9,13 +9,17 @@ use Src\Services\File;
 
 class ExchangesFileFactory
 {
-    public static function create($type, $symb)
+    public function __construct(string $type, $symbols)
+    {
+    }
+
+    public static function create($type, $symbols)
     {
         switch ($type) {
             case 'curl':
 
                 $curl = new CurlRequest();
-                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=' .$symb.'&base=EUR')
+                $curl->setUrl('https://api.apilayer.com/exchangerates_data/latest?symbols=' .$symbols.'&base=EUR')
                     ->setHeaders([
                         "Content-Type: text/plain",
                         "apikey: " . $_ENV['API_KEY'],
@@ -31,8 +35,8 @@ class ExchangesFileFactory
                 // no break
             case 'symfony':
                 $http_file = new SymfonyHttpFile();
-                $status_code = $http_file->create($symb);
-                return"symfony HTTP Code $status_code ";
+                $status_code = $http_file->create($symbols);
+                return "symfony HTTP Code $status_code";
             default:
                 die('Incorrect type ' . $type . ' choose curl or symfony');
         }

@@ -31,10 +31,11 @@ final class TelegramQueryValidation implements ValidationInterface
     /**
      * @throws Exception
      */
-    public function isEmpty(string $key): void
+    public function isEmpty(string $key): bool
     {
-        if (empty($key)) {
-            throw new Exception("Запрос $key не должен быть пустым!");
-        }
+//        if (empty($key)) {
+//            throw new Exception("Запрос $key не должен быть пустым!");
+//        }
+        return empty($key);
     }
 }

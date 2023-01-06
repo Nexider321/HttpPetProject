@@ -9,8 +9,8 @@ use Src\Http\Query\Validation\ValidationInterface;
 
 final class File
 {
-    private ValidationInterface $validation;
-    private string $key;
+//    private ValidationInterface $validation;
+//    private string $key;
 
     /**
      * @throws Exception
@@ -19,22 +19,19 @@ final class File
         ValidationInterface $validation,
         string $key
     ) {
-        $this->validation = $validation;
-        $this->key = $key;
-        $this->send();
+//        $this->validation = $validation;
+//        $this->key = $key;
+        $this->send($validation, $key);
     }
 
 
     /**
      * @throws Exception
      */
-    public function send(): void
+    public function send(ValidationInterface $validation, string $key): void
     {
-        if ($this->validation->isValid($this->key)) {
-//            CreateQueryValidation::log(ExchangesFileFactory::create($this->get['create'], 'GBP,JPY,RUB,USD'));
-            \Src\Services\File::log('Create CreateQueryValidation CREATED');
-        } else {
-            throw new Exception('NOT VALID');
-        }
+        $validation->isValid($key);
+//            \Src\Services\File::log(ExchangesFileFactory::create($this->key, 'GBP,JPY,RUB,USD'));
+        \Src\Services\File::log('Create CreateQueryValidation CREATED');
     }
 }

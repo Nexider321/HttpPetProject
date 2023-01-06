@@ -14,9 +14,9 @@
         xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
-<!--        <directory name="Src"/>-->
-        <directory name="Src/Http/Request"/>
-        <directory name="Src/Http/Query"/>
+        <directory name="Src"/>
+<!--        <directory name="Src/Http/Request"/>-->
+<!--        <directory name="Src/Http/Query"/>-->
 
         <ignoreFiles>
             <directory name="vendor"/>

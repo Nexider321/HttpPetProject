@@ -2,12 +2,13 @@
 
 namespace Src\Factory;
 
+use Exception;
 use Src\Http\Request\Request;
 
 class RequestFactory
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public static function create(array $get, array $post): Request
     {

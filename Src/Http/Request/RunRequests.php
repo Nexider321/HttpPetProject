@@ -7,7 +7,6 @@ use Src\Http\Query\File;
 use Src\Http\Query\Telegram;
 use Src\Http\Query\Validation\CreateQueryValidation;
 use Src\Http\Query\Validation\TelegramQueryValidation;
-use Src\Http\Query\Validation\ValidationInterface;
 
 class RunRequests
 {
