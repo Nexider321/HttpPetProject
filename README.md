@@ -1,6 +1,6 @@
 # PaymentPetProject
-
-Project for education purposes only!
+HTTP GET TO TELEGRAM SEND 
+Project 
 
 for correct work need create config/.env
 API_KEY={YOUR API KEY}
