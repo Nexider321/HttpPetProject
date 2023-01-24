@@ -1,5 +1,5 @@
 # PaymentPetProject
-HTTP GET TO TELEGRAM SEND 
+GET HTTP TO TELEGRAM SEND 
 Project 
 
 for correct work need create config/.env
